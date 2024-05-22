@@ -1,5 +1,6 @@
 
 const { DataTypes,sequelize } = require('sequelize');
+const { toDefaultValue } = require('sequelize/lib/utils');
 
 
 
@@ -19,6 +20,10 @@ const Product = sequelize.define('Product', {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  outOfStock:{
+   type: DataTypes.BOOLEAN,
+   defaultValue:false
+  }
 });
 
 module.exports = Product;

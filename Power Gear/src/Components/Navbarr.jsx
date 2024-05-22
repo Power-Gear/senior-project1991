@@ -15,7 +15,7 @@ const Navbar = () => {
   };
 
   return (
-    <AppBar position="static" style={{ color: '#003049', backgroundColor: '#FDF0D5' }}>
+    <AppBar position="sticky" style={{ color: '#023047', backgroundColor: '#219EBC' }}>
       <Toolbar>
         <Box sx={{ flexGrow: 1 }} style={{ display: 'flex' }} >
           <img src={logo} alt="Logo" style={{ height: '40px' }} />
@@ -25,25 +25,10 @@ const Navbar = () => {
         </Box>
         <Box sx={{ display: 'flex' }}>
          
-          <Button
-            color="inherit"
-            aria-controls="categories-menu"
-            aria-haspopup="true"
-            onClick={handleClick}
-          >
+        <Button color="inherit" component={Link} to="/Categories">
             Categories
           </Button>
-          <Menu
-            id="categories-menu"
-            category={category}
-            keepMounted
-            open={Boolean(category)}
-            onClose={handleClose}
-          >
-            <MenuItem component={Link} to="/category1" onClick={handleClose}>Category 1</MenuItem>
-            <MenuItem component={Link} to="/category2" onClick={handleClose}>Category 2</MenuItem>
-            <MenuItem component={Link} to="/category3" onClick={handleClose}>Category 3</MenuItem>
-          </Menu>
+        
           <Button color="inherit" component={Link} to="/about">
             About
           </Button>

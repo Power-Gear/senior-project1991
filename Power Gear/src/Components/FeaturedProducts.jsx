@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Typography, Grid, Card, CardContent } from '@mui/material';
+import { Typography, Grid, Card, CardContent, Hidden } from '@mui/material';
 import ProductCard from './ProductCard';
 
 function FeaturedProducts() {
@@ -9,7 +9,7 @@ function FeaturedProducts() {
       name: "Tech Fleece Joggers",
       category: "Bottoms",
       description: "Stay warm and comfortable during your next workout with these soft and stylish fleece joggers.",
-      imageUrl: "https://placeimg.com/640/480/fashion/tech",
+      imageUrl: "https://contents.mediadecathlon.com/p1991715/k$2b391cc5128b45b43f858ee72ca4cc32/sq/8542560.jpg?format=auto&f=320x320",
       price: 49.99,
     },
     {
@@ -17,7 +17,7 @@ function FeaturedProducts() {
       name: "Performance Training Tee",
       category: "Tops",
       description: "This breathable and moisture-wicking tee keeps you cool and dry during your toughest workouts.",
-      imageUrl: "https://placeimg.com/640/480/fashion/sports",
+      imageUrl: "https://contents.mediadecathlon.com/p1991715/k$2b391cc5128b45b43f858ee72ca4cc32/sq/8542560.jpg?format=auto&f=320x320",
       price: 29.99,
     },
     {
@@ -25,7 +25,7 @@ function FeaturedProducts() {
       name: "Water-Resistant Windbreaker Jacket",
       category: "Jackets",
       description: "Block out the wind and rain with this lightweight and water-resistant jacket.",
-      imageUrl: "https://placeimg.com/640/480/fashion/outdoors",
+      imageUrl: "https://contents.mediadecathlon.com/p1991715/k$2b391cc5128b45b43f858ee72ca4cc32/sq/8542560.jpg?format=auto&f=320x320",
       price: 79.99,
     },
     {
@@ -33,7 +33,7 @@ function FeaturedProducts() {
       name: "High-Performance Sports Bra",
       category: "Bras",
       description: "Provides maximum support and comfort for high-impact activities.",
-      imageUrl: "https://placeimg.com/640/480/fashion/sportswear",
+      imageUrl: "https://contents.mediadecathlon.com/p1991740/k$af1bd0e738174f34431e2b40c68001c4/sq/8501452.jpg?format=auto&f=320x320",
       price: 34.99,
     },
     {
@@ -41,7 +41,7 @@ function FeaturedProducts() {
       name: "Quick-Drying Compression Shorts",
       category: "Bottoms",
       description: "These lightweight and quick-drying shorts offer excellent compression and moisture management.",
-      imageUrl: "https://placeimg.com/640/480/fashion/activewear",
+      imageUrl: "https://contents.mediadecathlon.com/p1991740/k$af1bd0e738174f34431e2b40c68001c4/sq/8501452.jpg?format=auto&f=320x320",
       price: 24.99,
     },
   ]);
@@ -74,10 +74,10 @@ function FeaturedProducts() {
 //   }
 
   return (
-    <Grid container spacing={2}>
+    <Grid container padding={5} style={{ color: '#219EBC', backgroundColor: '#219EBC'  }}>
       {products.map((product) => (
         <Grid item xs={12} sm={6} md={4} key={product.id}>
-          <ProductCard product={product} />
+          <ProductCard product={product}  />
         </Grid>
       ))}
     </Grid>

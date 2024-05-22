@@ -3,11 +3,7 @@ const Order = require('./Order')
 const { sequelize,DataTypes } = require('sequelize');
 
 const User = sequelize.define('User', {
-  firstName: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  lastName: {
+  userName: {
     type: DataTypes.STRING,
     allowNull: false,
   },
@@ -19,6 +15,11 @@ const User = sequelize.define('User', {
       isEmail: true,
     },
   },
+  password:{
+    type:DataTypes.STRING,
+    allowNull:false,
+  },
+  
 });
 
 Order.belongsTo(User); 
