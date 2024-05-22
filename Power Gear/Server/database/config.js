@@ -8,7 +8,7 @@ const dbHost = 'localhost';
 
 const sequelize = new Sequelize(dbName, dbUser, dbPass, {
   host: dbHost,
-  dialect: 'sql',
+  dialect: 'mysql',
 });
 
 sequelize
