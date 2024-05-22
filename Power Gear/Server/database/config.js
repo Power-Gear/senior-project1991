@@ -23,14 +23,14 @@ const User = require("../Models/user")(sequelize, DataTypes);
 const Product = require("../Models/product")(sequelize, DataTypes);
 const Order=require("../Models/order")(sequelize,DataTypes);
 
-sequelize
-  .sync()
-  .then(() => {
-    console.log("Tables created successfully!");
-  })
-  .catch((error) => {
-    console.error("Unable to create tables:", error);
-  });
+// sequelize
+//   .sync()
+//   .then(() => {
+//     console.log("Tables created successfully!");
+//   })
+//   .catch((error) => {
+//     console.error("Unable to create tables:", error);
+//   });
 
   const db = {};
 
