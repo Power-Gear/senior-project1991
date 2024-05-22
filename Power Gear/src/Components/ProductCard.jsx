@@ -4,7 +4,7 @@ import { Card, CardActionArea, CardMedia, CardContent, Typography, Button } from
 
 function ProductCard({ product }) {
   return (
-    <Card>
+    <Card style={{margin:"5px"}}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -16,8 +16,8 @@ function ProductCard({ product }) {
           <Typography variant="body2" color="primary">
             ${product.price}
           </Typography>
-          <Button variant="contained" size="small">
-            Add to Cart
+          <Button variant="contained" size="small" style={{ color: '#023047', backgroundColor: '#FB8500'  ,border:"solid",borderColor:'#023047'}}>
+           <b> Add to Cart </b>
           </Button>
         </CardContent>
       </CardActionArea>

@@ -6,11 +6,10 @@ const User = require('./User');
 const Product = require('./Product');
 
 const Order = sequelize.define('Order', {
-  orderNumber: {
-    type: DataTypes.UUID,
-    defaultValue: DataTypes.UUIDV4,
-    primaryKey: true,
-  },
+ products:{
+  type: DataTypes.STRING,
+  allowNull:false
+ },
   totalAmount: {
     type: DataTypes.FLOAT,
     allowNull: false,
