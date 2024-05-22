@@ -1,8 +1,6 @@
 
-const Order = require('./Order')
-const { sequelize,DataTypes } = require('sequelize');
-
-const User = sequelize.define('User', {
+module.exports = (connection, DataTypes) => {
+const User = connection.define('User', {
   userName: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -21,8 +19,8 @@ const User = sequelize.define('User', {
   },
   
 });
+return User
+}
 
-Order.belongsTo(User); 
-User.hasMany(Order);
 
-module.exports = User;
+

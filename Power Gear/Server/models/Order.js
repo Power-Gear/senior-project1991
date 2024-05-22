@@ -1,11 +1,8 @@
 
 
-const { DataTypes } = require('sequelize');
-const {sequelize} = require('sequelize');
-const User = require('./User');
-const Product = require('./Product');
+module.exports = (connection, DataTypes) => {
 
-const Order = sequelize.define('Order', {
+const Order = connection.define('Order', {
  products:{
   type: DataTypes.STRING,
   allowNull:false
@@ -20,8 +17,5 @@ const Order = sequelize.define('Order', {
     allowNull: false,
   },
 });
-
-Order.belongsTo(User); 
-User.hasMany(Order);
-
-module.exports = Order;
+return Order
+}

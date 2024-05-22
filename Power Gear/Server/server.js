@@ -1,17 +1,20 @@
 const express = require('express');
 const cors = require('cors');
-const sequelize = require('./database/config');
-
+const PORT = process.env.PORT || 5000;
 const app = express();
-
+const userRoutes=require('./routes/userRoutes')
+const adminRoutes=require('./routes/adminRoutes')
 
 app.use(express.json());
 app.use(cors());
 
 
-app.get('/home', (req, res) => {
+app.get('/', (req, res) => {
   res.send('API is running...');
 });
+
+app.use('/User',userRoutes);
+app.use('/Admin',adminRoutes);
 
 // Define Routes (these routes will be created later)
 // app.use('/api/products', require('./routes/productRoutes'));
@@ -19,7 +22,7 @@ app.get('/home', (req, res) => {
 // app.use('/api/orders', require('./routes/orderRoutes'));
 // app.use('/api/categories', require('./routes/categoryRoutes'));
 
-const PORT = process.env.PORT || 5000;
+
 
 
 app.listen(PORT, () => {
