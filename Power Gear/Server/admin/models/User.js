@@ -1,5 +1,5 @@
 
-
+const Order = require('./Order')
 const { sequelize,DataTypes } = require('sequelize');
 
 const User = sequelize.define('User', {

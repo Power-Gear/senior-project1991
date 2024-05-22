@@ -3,6 +3,7 @@
 const { DataTypes } = require('sequelize');
 const {sequelize} = require('sequelize');
 const User = require('./User');
+const Product = require('./Product');
 
 const Order = sequelize.define('Order', {
   orderNumber: {
