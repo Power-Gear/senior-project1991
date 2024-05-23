@@ -13,7 +13,7 @@ const UsersPage = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('/getUsers');
+      const response = await axios.get('http://localhost:5000/admin/getUsers');
       setUsers(response.data);
     } catch (error) {
       console.error('Error fetching users:', error);
@@ -22,7 +22,7 @@ const UsersPage = () => {
 
   const handleDeleteUser = async (userId) => {
     try {
-      await axios.delete(`/users/${userId}`);
+      await axios.delete(`http://localhost:5000/users/${userId}`);
       fetchUsers(); 
     } catch (error) {
       console.error('Error deleting user:', error);

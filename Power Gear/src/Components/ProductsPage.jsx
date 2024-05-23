@@ -33,7 +33,8 @@ const ProductsPage = () => {
   const classes = useStyles();
   const [products, setProducts] = useState([]);
   const [editDialogOpen, setEditDialogOpen] = useState(false);
-  const [currentProduct, setCurrentProduct] = useState({ id: '', name: '', price: '' });
+  const [currentProduct, setCurrentProduct] = useState({ id: '', name: '', price: '', image: '' });
+  const [image, setImage] = useState(null);
 
   useEffect(() => {
     fetchProducts();
@@ -41,7 +42,7 @@ const ProductsPage = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('/admin/products');
+      const response = await axios.get('http://localhost:5000/Admin/products');
       setProducts(response.data);
     } catch (error) {
       console.error('Error fetching products:', error);
@@ -50,7 +51,7 @@ const ProductsPage = () => {
 
   const deleteProduct = async (productId) => {
     try {
-      await axios.delete(`/admin/products/${productId}`);
+      await axios.delete(`http://localhost:5000/Admin/products/${productId}`);
       setProducts(products.filter((product) => product.id !== productId));
     } catch (error) {
       console.error('Error deleting product:', error);
@@ -64,7 +65,8 @@ const ProductsPage = () => {
 
   const closeEditDialog = () => {
     setEditDialogOpen(false);
-    setCurrentProduct({ id: '', name: '', price: '' });
+    setCurrentProduct({ id: '', name: '', price: '', image: '' });
+    setImage(null);
   };
 
   const handleEditInputChange = (e) => {
@@ -72,9 +74,24 @@ const ProductsPage = () => {
     setCurrentProduct({ ...currentProduct, [name]: value });
   };
 
+  const handleImageChange = (e) => {
+    setImage(e.target.files[0]);
+  };
+
   const updateProduct = async () => {
     try {
-      await axios.put(`/admin/products/${currentProduct.id}`, currentProduct);
+      if (image) {
+        const formData = new FormData();
+        formData.append('image', image);
+
+        const response = await axios.post('/upload', formData, {
+          headers: { 'Content-Type': 'multipart/form-data' },
+        });
+
+        currentProduct.image = response.data.imageUrl;
+      }
+
+      await axios.put(`http://localhost:5000/Admin/products/${currentProduct.id}`, currentProduct);
       fetchProducts();
       closeEditDialog();
     } catch (error) {
@@ -136,6 +153,7 @@ const ProductsPage = () => {
             value={currentProduct.price}
             onChange={handleEditInputChange}
           />
+          <input type="file" onChange={handleImageChange} />
         </DialogContent>
         <DialogActions>
           <Button onClick={closeEditDialog} color="primary">
