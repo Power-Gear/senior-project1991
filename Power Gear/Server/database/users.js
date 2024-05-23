@@ -60,5 +60,19 @@ module.exports = {
       res.status(500).send("Error updating user");
     }
   },
+  deleteUser : async (req, res) => {
+    const userId = req.params.userId;
+    try {
+      const user = await db.User.findByPk(userId);
+      if (!user) {
+        return res.status(404).send("User not found");
+      }
+      await user.destroy(); 
+      res.status(204).send();
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Error deleting user");
+    }
+  },
   
 };

@@ -1,34 +1,56 @@
-import React,{useState} from 'react';
-import { AppBar, Toolbar, Button, Box, Menu, MenuItem } from '@mui/material';
+import React, { useState } from 'react';
+import { AppBar, Toolbar, Button, Box, Menu, MenuItem, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import logo from '../assets/Images/logo.png';
 
 const Navbar = () => {
-  const [category,setcategory] = useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
 
-  const handleClick = (event) => {
-    setcategory(event.currentTarget);
+  const handleMenuClick = (event) => {
+    setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
-    setcategory(null);
+  const handleMenuClose = () => {
+    setAnchorEl(null);
   };
 
   return (
     <AppBar position="sticky" style={{ color: '#023047', backgroundColor: '#219EBC' }}>
       <Toolbar>
-        <Box sx={{ flexGrow: 1 }} style={{ display: 'flex' }} >
-          <img src={logo} alt="Logo" style={{ height: '40px' }} />
-          <Button color="inherit" component={Link} to="/">
+        <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
+          <img src={logo} alt="Logo" style={{ height: '40px', marginRight: '10px' }} />
+          <Typography variant="h6" component={Link} to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
             Power Gear
-          </Button>
+          </Typography>
         </Box>
         <Box sx={{ display: 'flex' }}>
-         
-        <Button color="inherit" component={Link} to="/Categories">
+          <Button color="inherit" onClick={handleMenuClick}>
             Categories
           </Button>
-        
+          <Menu
+            anchorEl={anchorEl}
+            open={Boolean(anchorEl)}
+            onClose={handleMenuClose}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+            getContentAnchorEl={null}
+          >
+            <MenuItem onClick={handleMenuClose} component={Link} to="/categories">
+              Category 1
+            </MenuItem>
+            <MenuItem onClick={handleMenuClose} component={Link} to="/categories">
+              Category 2
+            </MenuItem>
+            <MenuItem onClick={handleMenuClose} component={Link} to="/categories">
+              Category 3
+            </MenuItem>
+          </Menu>
           <Button color="inherit" component={Link} to="/about">
             About
           </Button>

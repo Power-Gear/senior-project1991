@@ -1,9 +1,16 @@
 const { Sequelize, DataTypes } = require("sequelize");
+const cloudinary = require('cloudinary').v2;
 
 const dbName = "gymdb";
 const dbUser = "root";
 const dbPass = "root";
 const dbHost = "localhost";
+
+cloudinary.config({
+  cloud_name: 'bacem',
+  api_key: '681412664529868',
+  api_secret: 'rqqXeT2ACJcWFMRrF5IVOsc8fG8'
+});
 
 const sequelize = new Sequelize(dbName, dbUser, dbPass, {
   host: dbHost,

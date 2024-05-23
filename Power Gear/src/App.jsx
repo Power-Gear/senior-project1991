@@ -1,8 +1,11 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./Components/Home.jsx";
-import About from "./Components/About.jsx";
-import Login from "./Components/Login.jsx";
-import Categories from './Components/Categories.jsx'
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './Components/Home';
+import About from './Components/About';
+import Login from './Components/Login';
+import Categories from './Components/Categories';
+import Admin from './Components/admin';
+
 function App() {
   return (
     <div className="App">
@@ -11,7 +14,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="login" element={<Login />} />
-          <Route path="Categories" element={<Categories/>}/>
+          <Route path="categories" element={<Categories />} />
+          <Route path="admin/*" element={<Admin />} />
         </Routes>
       </BrowserRouter>
     </div>
